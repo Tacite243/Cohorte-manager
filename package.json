@@ -1,0 +1,24 @@
+{
+  "name": "cohorte-manager",
+  "version": "1.0.0",
+  "description": "Micro système d'attribution d'ordinateur aux apprenants d'un centre de formation de gestion des cohortes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tacite243/Cohorte-manager.git"
+  },
+  "author": "tacite_wk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tacite243/Cohorte-manager/issues"
+  },
+  "homepage": "https://github.com/Tacite243/Cohorte-manager#readme",
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
