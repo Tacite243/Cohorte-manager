@@ -12,3 +12,52 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Ordinateur {
+  tag        String      @id @default(cuid())
+  modele     String      @unique
+  fabriquant String?
+  Apprenant  Apprenant[]
+}
+
+model Session {
+  id      String    @id @default(cuid())
+  annee   Int
+  type    String
+  Cohorte Cohorte[]
+}
+
+model Cohorte {
+  code       String      @id
+  descrption String
+  idSession  String      @map("idSession")
+  session    Session     @relation(fields: [idSession], references: [id])
+  apprenant  Apprenant[]
+  coach      Coach[]
+}
+
+model Apprenant {
+  matricule     String     @id @default(cuid())
+  prenom        String
+  nom           String
+  postnom       String
+  dateNaissance DateTime
+  addresse      String
+  email         String
+  telephone     String
+  tagOrdinateur String     @map("tag_ordinateur")
+  codeCohorte   String     @map("code_cohorte")
+  ordinateur    Ordinateur @relation(fields: [tagOrdinateur], references: [tag])
+  cohorte       Cohorte    @relation(fields: [codeCohorte], references: [code])
+}
+
+model Coach {
+  matricule   String  @id @default(cuid())
+  prenom      String
+  nom         String
+  email       String
+  telephone   String
+  addresse    String
+  codeCohorte String  @map("code_cohorte")
+  cohorte     Cohorte @relation(fields: [codeCohorte], references: [code])
+}
